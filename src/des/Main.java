@@ -42,22 +42,6 @@ public class Main extends Application
 	public static void main(String[] args)
 	{
 		launch(args);
-		Scanner sc = new Scanner(System.in);
-
-        System.out.println("Plaintext: ");
-        String plaintext = sc.next();
-
-        try {
-            KeyGenerator keyGenerator = KeyGenerator.getInstance("DES");
-            SecretKey key = keyGenerator.generateKey();
-
-            Cipher cipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, key);
-
-            System.out.println("Ciphertext: " + new String(cipher.doFinal(plaintext.getBytes())));
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException |
-                IllegalBlockSizeException | BadPaddingException e) {
-            e.printStackTrace();
-        }
+		
 	}
 }

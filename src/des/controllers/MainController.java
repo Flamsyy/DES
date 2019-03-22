@@ -3,6 +3,7 @@ package des.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import des.DES;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -49,11 +50,26 @@ public class MainController implements Initializable
 		outputTextArea.setEditable(false);
 		encryptButton.setOnAction(e ->
 		{
-			System.out.println("Encrypting...");
+			String msg = inputTextArea.getText();
+			String mode = modeComboBox.getSelectionModel().getSelectedItem();
+			String padding = null;
+			if(paddingGroup.getSelectedToggle() != null)
+				padding = paddingGroup.getSelectedToggle().getUserData().toString();
+			String key = keyTextField.getText();
+			String encryptedMsg = DES.encrypt(msg, mode, padding, key);
+			outputTextArea.setText(encryptedMsg);
+			
 		});
 		decryptButton.setOnAction(e ->
 		{
-			System.out.println("Decrypting...");
+			String msg = inputTextArea.getText();
+			String mode = modeComboBox.getSelectionModel().getSelectedItem();
+			String padding = null;
+			if(paddingGroup.getSelectedToggle() != null)
+				padding = paddingGroup.getSelectedToggle().getUserData().toString();
+			String key = keyTextField.getText();
+			String decryptedMsg = DES.decrypt(msg, mode, padding, key);
+			outputTextArea.setText(decryptedMsg);
 		});
 		
 	}
