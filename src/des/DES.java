@@ -38,7 +38,15 @@ public class DES
 	
 	public static String decrypt(String cipherText, String mode, String padding, String key)
 	{
-		return null;
+		SecretKey secretKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "DES");
+		Cipher cipher = Cipher.getInstance("DES/"+mode+"/"+padding);
+		if(mode.equals("ECB"))
+		cipher.init(Cipher.DECRYPT_MODE, secretKey);
+		else
+		cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(new byte[16]));
+		byte[] cipherbytes = cipher.doFinal(Base64.getDecoder().decode(cipherText));
+	
+	return new String(cipherbytes);
 	}
 }
 
