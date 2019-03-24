@@ -43,10 +43,9 @@ public class DES
 		if(mode.equals("ECB"))
 		cipher.init(Cipher.DECRYPT_MODE, secretKey);
 		else
-		cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(new byte[16]));
+		cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(new byte[8]));
 		byte[] cipherbytes = cipher.doFinal(Base64.getDecoder().decode(cipherText));
-	
-	return new String(cipherbytes);
+		return new String(cipherbytes);
 	}
 }
 
