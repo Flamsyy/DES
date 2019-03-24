@@ -56,8 +56,8 @@ public class MainController implements Initializable
 			if(paddingGroup.getSelectedToggle() != null)
 				padding = paddingGroup.getSelectedToggle().getUserData().toString();
 			String key = keyTextField.getText();
-			String encryptedMsg = DES.encrypt(msg, mode, padding, key);
-			outputTextArea.setText(encryptedMsg);
+			//String encryptedMsg = DES.encrypt(msg, mode, padding, key);
+			//outputTextArea.setText(encryptedMsg);
 			
 		});
 		decryptButton.setOnAction(e ->
@@ -68,8 +68,8 @@ public class MainController implements Initializable
 			if(paddingGroup.getSelectedToggle() != null)
 				padding = paddingGroup.getSelectedToggle().getUserData().toString();
 			String key = keyTextField.getText();
-			String decryptedMsg = DES.decrypt(msg, mode, padding, key);
-			outputTextArea.setText(decryptedMsg);
+			//String decryptedMsg = DES.decrypt(msg, mode, padding, key);
+			//outputTextArea.setText(decryptedMsg);
 		});
 		
 	}

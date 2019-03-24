@@ -36,7 +36,7 @@ public class DES
 
 	}
 	
-	public static String decrypt(String cipherText, String mode, String padding, String key)
+	public static String decrypt(String cipherText, String mode, String padding, String key) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, InvalidAlgorithmParameterException, IllegalBlockSizeException, BadPaddingException
 	{
 		SecretKey secretKey = new SecretKeySpec(key.getBytes(StandardCharsets.UTF_8), "DES");
 		Cipher cipher = Cipher.getInstance("DES/"+mode+"/"+padding);
