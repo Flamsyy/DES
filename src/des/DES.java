@@ -24,9 +24,9 @@ public class DES
 		if(mode.equals("ECB")) 
 		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 		else
-		cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(new byte[16]));
+		cipher.init(Cipher.ENCRYPT_MODE, secretKey, new IvParameterSpec(new byte[8]));
 
-		if(padding.equals("NoPadding") && plainText.getBytes().length % 16 != 0)
+		if(padding.equals("NoPadding") && plainText.getBytes().length%8!=0)
 		{
 		System.out.println("wrong block size");
 		return "";
